@@ -141,7 +141,7 @@ suite('Unit Tests', function() {
 				'KG',
 			]
 
-			for (const value of input) {
+			for (const [index, value] of input.entries()) {
 				const argument =
 					Math.random() * 100 +
 					(Math.random() > 0.5 ? 0 : `/${Math.random() * 100}`) +
@@ -189,14 +189,7 @@ suite('Unit Tests', function() {
 			var expect = ['l', 'gal', 'km', 'mi', 'kg', 'lbs']
 
 			for (const [index, value] of input.entries()) {
-				const argument =
-					Math.random() * 100 +
-					(Math.random() > 0.5 ? 0 : `/${Math.random() * 100}`) +
-					value
-				assert.equal(
-					convertHandler.getReturnUnit(argument),
-					expect[index]
-				)
+				assert.equal(convertHandler.getReturnUnit(value), expect[index])
 			}
 
 			done()
@@ -236,14 +229,7 @@ suite('Unit Tests', function() {
 			]
 
 			for (const [index, value] of input.entries()) {
-				const argument =
-					Math.random() * 100 +
-					(Math.random() > 0.5 ? 0 : `/${Math.random() * 100}`) +
-					value
-				assert.equal(
-					convertHandler.spellOutUnit(argument),
-					expect[index]
-				)
+				assert.equal(convertHandler.spellOutUnit(value), expect[index])
 			}
 
 			done()
